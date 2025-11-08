@@ -1,1 +1,14 @@
-com\yourname\stravacli\App.class
+com\strava\stravacli\token\TokenData.class
+com\strava\stravacli\services\PredictionService.class
+com\strava\stravacli\config\StravaConfig.class
+com\strava\stravacli\cli\CliRunner.class
+com\strava\stravacli\client\StravaClient$1.class
+com\strava\stravacli\model\Activity.class
+com\strava\stravacli\services\StravaService.class
+META-INF\spring-configuration-metadata.json
+com\strava\stravacli\client\StravaClient.class
+com\strava\stravacli\model\ActivityType.class
+com\strava\stravacli\services\StatisticsService.class
+com\strava\stravacli\ConfigVerifier.class
+com\strava\stravacli\StravaCliApplication.class
+com\strava\stravacli\token\TokenManager.class

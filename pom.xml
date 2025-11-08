@@ -1,23 +1,92 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.yourname.stravacli</groupId>
-  <artifactId>strava-cli-analyzer</artifactId>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.3.2</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>com.strava</groupId>
+  <artifactId>strava-cli</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Strava CLI Analytics</name>
+  <description>CLI-based Strava analytics app built with Spring Boot</description>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>strava-cli-analyzer</name>
-  <url>http://maven.apache.org</url>
+
+  <properties>
+    <java.version>17</java.version>
+    <commons.math.version>3.6.1</commons.math.version>
+  </properties>
+
   <dependencies>
+    <!-- Core Spring Boot -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
     </dependency>
+
+    <!-- Enable @ConfigurationProperties -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <!-- JSON parsing -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.16.2</version>
     </dependency>
+
+    <!-- Math utilities -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-math3</artifactId>
+      <version>${commons.math.version}</version>
+    </dependency>
+
+    <!-- Testing -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.github.cdimascio</groupId>
+      <artifactId>dotenv-java</artifactId>
+      <version>2.2.0</version>
+    </dependency>
+
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
