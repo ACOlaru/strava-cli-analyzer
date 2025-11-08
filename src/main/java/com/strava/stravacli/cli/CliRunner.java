@@ -114,11 +114,6 @@ public class CliRunner implements CommandLineRunner {
         }
     }
 
-    private String getToken() {
-        System.out.println("Enter your Strava Access Token:");
-        return scanner.nextLine().trim();
-    }
-
     private static void printMenu() {
         System.out.println("Please choose one of the following options:");
         System.out.println("0. Reset token");
@@ -159,19 +154,19 @@ public class CliRunner implements CommandLineRunner {
     }
 
     private void showPredictions() {
-        List<Activity> activities = stravaClient.fetchRecentActivities(token);
+        List<Activity> activities = stravaService.getActivities();
         ActivityPrediction predictions = predictionService.getPredictions(activities);
         System.out.println(predictions.toString());    }
 
     private void showStatistics() {
-        List<Activity> activities = stravaClient.fetchRecentActivities(token);
+        List<Activity> activities = stravaService.getActivities();
         ActivityStats activityStats = statisticsService.getStatistics(activities);
         System.out.println(activityStats.toString());
 
     }
 
     private void fetchActivities() {
-        List<Activity> activities = stravaClient.fetchRecentActivities(token);
+        List<Activity> activities = stravaService.getActivities();
         System.out.println(activities);
     }
 }

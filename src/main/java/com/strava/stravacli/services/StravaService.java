@@ -6,6 +6,7 @@ import com.strava.stravacli.token.TokenData;
 import com.strava.stravacli.token.TokenManager;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -18,10 +19,13 @@ public class StravaService {
         this.tokenManager = tokenManager;
     }
 
-    public List<Activity> getActivities() throws Exception {
+    public List<Activity> getActivities() {
         TokenData tokenData = tokenManager.loadToken();
 
-        if (tokenData == null) throw new RuntimeException("No token found");
+        if (tokenData == null) {
+            System.out.println("No token found");
+            return Collections.emptyList();
+        };
 
         if (tokenManager.isExpired(tokenData)) {
             tokenData = tokenManager.refreshToken(tokenData);
