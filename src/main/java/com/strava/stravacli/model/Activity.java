@@ -23,6 +23,9 @@ public class Activity {
     @JsonProperty("kudos_count")
     private int kudosCount;
 
+    @JsonProperty("start_date_local")
+    private String startDateLocal;
+
     @Override
     public String toString() {
         return String.format("%s (%s): %.2f km, %d min, ↑ %.1f m",
@@ -95,5 +98,13 @@ public class Activity {
 
     public void setKudosCount(int kudosCount) {
         this.kudosCount = kudosCount;
+    }
+
+    public String getStartDateLocal() {
+        return startDateLocal;
+    }
+
+    public void setStartDateLocal(String startDateLocal) {
+        this.startDateLocal = startDateLocal;
     }
 }

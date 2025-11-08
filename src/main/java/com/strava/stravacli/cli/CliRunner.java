@@ -3,6 +3,8 @@ package com.strava.stravacli.cli;
 import com.strava.stravacli.config.StravaConfig;
 import com.strava.stravacli.client.StravaClient;
 import com.strava.stravacli.model.Activity;
+import com.strava.stravacli.model.ActivityPrediction;
+import com.strava.stravacli.model.ActivityStats;
 import com.strava.stravacli.services.PredictionService;
 import com.strava.stravacli.services.StatisticsService;
 import com.strava.stravacli.services.StravaService;
@@ -17,13 +19,13 @@ import java.util.Scanner;
 
 @Component
 public class CliRunner implements CommandLineRunner {
-    private StravaConfig stravaConfig;
-    private StravaClient stravaClient;
-    private StatisticsService statisticsService;
-    private PredictionService predictionService;
-    private StravaService stravaService;
-    private TokenManager tokenManager;
-    private static Scanner scanner = new Scanner(System.in);
+    private final StravaConfig stravaConfig;
+    private final StravaClient stravaClient;
+    private final StatisticsService statisticsService;
+    private final PredictionService predictionService;
+    private final StravaService stravaService;
+    private final TokenManager tokenManager;
+    private final static Scanner scanner = new Scanner(System.in);
     private String token;
 
     @Autowired
@@ -37,7 +39,7 @@ public class CliRunner implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         System.out.println("Welcome to Strava Analyzer");
         System.out.println("----------------------------------");
 
@@ -142,7 +144,7 @@ public class CliRunner implements CommandLineRunner {
             if (input.startsWith("e")) {
                 System.out.println("Exiting....");
                 System.exit(0);
-            };
+            }
 
             System.out.println("Please answer 'y', 'n' or 'exit'.");
         }
@@ -157,11 +159,15 @@ public class CliRunner implements CommandLineRunner {
     }
 
     private void showPredictions() {
-        System.out.println("Will be released");
-    }
+        List<Activity> activities = stravaClient.fetchRecentActivities(token);
+        ActivityPrediction predictions = predictionService.getPredictions(activities);
+        System.out.println(predictions.toString());    }
 
     private void showStatistics() {
-        System.out.println("Will be released");
+        List<Activity> activities = stravaClient.fetchRecentActivities(token);
+        ActivityStats activityStats = statisticsService.getStatistics(activities);
+        System.out.println(activityStats.toString());
+
     }
 
     private void fetchActivities() {
