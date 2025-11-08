@@ -1,4 +1,6 @@
-package com.strava.stravacli.model;
+package com.strava.stravacli.util;
+
+import com.strava.stravacli.model.Activity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

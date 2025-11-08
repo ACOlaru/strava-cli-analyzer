@@ -2,7 +2,7 @@ package com.strava.stravacli.services;
 
 import com.strava.stravacli.model.Activity;
 import com.strava.stravacli.model.ActivityPrediction;
-import com.strava.stravacli.model.ActivityWrapper;
+import com.strava.stravacli.util.ActivityWrapper;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
 import org.springframework.stereotype.Service;
 
