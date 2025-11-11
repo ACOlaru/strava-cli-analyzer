@@ -97,6 +97,12 @@ STRAVA_REDIRECT_URI=your_redirect_url`
 * Integration with RESTful or cloud-based backends
 * Advanced predictive modeling (e.g., time-series forecasting)
 
+## Learn More
+
+I wrote a detailed article about this project on Medium, explaining the architecture, design patterns, and concurrency challenges:
+
+[From Strides to Stats: Building My Own Strava CLI Analytics Tool in Java](https://medium.com/@olarualexandra/from-strides-to-stats-building-my-own-strava-cli-analytics-tool-in-java-3f792d8e7baa)
+
 
 ## ⚖️ License
 Licensed under the MIT License.
